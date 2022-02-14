@@ -1,9 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import { Hero } from "components/common";
-import { List } from "components/course";
-import { BaseLayout } from "components/layout";
+import { Hero } from "components/ui/common";
+import { List } from "components/ui/course";
+import { BaseLayout } from "components/ui/layout";
 import getAllProducts from "content/products/fetcher";
 
 const propTypes = {
