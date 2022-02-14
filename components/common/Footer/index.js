@@ -1,6 +1,6 @@
 import React from "react";
 
-const Footer = () => {
+const Footer = () => (
   <footer className="bg-gray-900 pt-1">
     <div className="container mx-auto px-6">
       <div className="mt-5 flex flex-col items-center">
@@ -11,7 +11,7 @@ const Footer = () => {
         </div>
       </div>
     </div>
-  </footer>;
-};
+  </footer>
+);
 
 export default Footer;
