@@ -1,4 +1,10 @@
-import React, { createContext, useContext, useEffect, useState } from "react";
+import React, {
+  createContext,
+  useContext,
+  useEffect,
+  useState,
+  useMemo,
+} from "react";
 import PropTypes from "prop-types";
 
 import detectEthereumProvider from "@metamask/detect-provider";
@@ -37,8 +43,27 @@ export default function Web3Provider({ children }) {
     loadProvider();
   }, []);
 
+  const _web3Api = useMemo(
+    () => ({
+      ...web3Api,
+      connect: web3Api.provider
+        ? async () => {
+            try {
+              // opens the Metamask
+              await web3Api.provider
+                .request({ method: "eth_requestAccounts" })
+                .then((res) => console.log(res));
+            } catch {
+              window.location.reload();
+            }
+          }
+        : () => console.error("Please install MetaMask"),
+    }),
+    [web3Api]
+  );
+
   return (
-    <Web3Context.Provider value={web3Api}>{children}</Web3Context.Provider>
+    <Web3Context.Provider value={_web3Api}>{children}</Web3Context.Provider>
   );
 }
 
