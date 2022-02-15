@@ -3,7 +3,7 @@ import Link from "next/link";
 import { useWeb3 } from "components/providers";
 
 const Navbar = () => {
-  const { connect } = useWeb3();
+  const { connect, isLoading, web3 } = useWeb3();
   return (
     <section>
       <div className="relative pt-6 px-4 sm:px-6 lg:px-8">
@@ -32,15 +32,27 @@ const Navbar = () => {
                   Wishlist
                 </p>
               </Link>
-              <span
-                onClick={() => connect()}
-                onKeyUp={connect}
-                role="button"
-                tabIndex={0}
-                className="px-8 py-3 border text-base rounded-md font-medium text-white bg-indigo-600 hover:bg-indigo-700 cursor-pointer"
-              >
-                Connect
-              </span>
+              {!isLoading && web3 ? (
+                <span
+                  onClick={() => connect()}
+                  onKeyUp={connect}
+                  role="button"
+                  tabIndex={0}
+                  className="px-8 py-3 border text-base rounded-md font-medium text-white bg-indigo-600 hover:bg-indigo-700 cursor-pointer"
+                >
+                  Connect
+                </span>
+              ) : (
+                <span
+                  onClick={() => connect()}
+                  onKeyUp={connect}
+                  role="button"
+                  tabIndex={0}
+                  className="px-8 py-3 border text-base rounded-md font-medium text-white bg-indigo-600 hover:bg-indigo-700 cursor-pointer"
+                >
+                  Install Metamask
+                </span>
+              )}
             </div>
           </div>
         </nav>
