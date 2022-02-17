@@ -7,14 +7,13 @@ const propTypes = {
 };
 
 const Button = ({ children, className, ...rest }) => (
-  <span
+  <button
     {...rest}
-    role="button"
-    tabIndex={0}
-    className={`px-8 py-3 border text-base rounded-md font-medium ${className} cursor-pointer`}
+    type="button"
+    className={`disabled:opacity-50 disabled:cursor-not-allowed px-8 py-3 border text-base rounded-md font-medium ${className}`}
   >
     {children}
-  </span>
+  </button>
 );
 Button.propTypes = propTypes;
 Button.defaultProps = {
