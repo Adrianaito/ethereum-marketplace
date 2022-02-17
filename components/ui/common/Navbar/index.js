@@ -1,12 +1,10 @@
 import React from "react";
 import Link from "next/link";
-import { useRouter } from "next/router";
 
 import { useWeb3 } from "components/providers";
 import { Button } from "components/ui/common";
 
 const Navbar = () => {
-  const router = useRouter();
   const { connect, isLoading, isWeb3Loaded } = useWeb3();
   return (
     <section>
@@ -44,7 +42,9 @@ const Navbar = () => {
                 <Button onClick={connect}>Connect</Button>
               ) : (
                 <Button
-                  onClick={() => router.push("https://metamask.io/download/")}
+                  onClick={() =>
+                    window.open("https://metamask.io/download/", "_blank")
+                  }
                 >
                   Install Metamask
                 </Button>
