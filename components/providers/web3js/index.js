@@ -32,7 +32,7 @@ export default function Web3Provider({ children }) {
         setWeb3Api({
           provider,
           web3,
-          constract: null,
+          contract: null,
           isLoading: false,
         });
       } else {
@@ -46,6 +46,7 @@ export default function Web3Provider({ children }) {
   const _web3Api = useMemo(
     () => ({
       ...web3Api,
+      isWeb3Loaded: web3Api.web3 !== null,
       connect: web3Api.provider
         ? async () => {
             try {
