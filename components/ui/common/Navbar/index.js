@@ -1,6 +1,8 @@
 import React from "react";
 import Link from "next/link";
+
 import { useWeb3 } from "components/providers";
+import { Button } from "components/ui/common";
 
 const Navbar = () => {
   const { connect, isLoading, web3 } = useWeb3();
@@ -33,25 +35,23 @@ const Navbar = () => {
                 </p>
               </Link>
               {!isLoading && web3 ? (
-                <span
+                <Button
                   onClick={() => connect()}
                   onKeyUp={connect}
                   role="button"
                   tabIndex={0}
-                  className="px-8 py-3 border text-base rounded-md font-medium text-white bg-indigo-600 hover:bg-indigo-700 cursor-pointer"
                 >
                   Connect
-                </span>
+                </Button>
               ) : (
-                <span
+                <Button
                   onClick={() => connect()}
                   onKeyUp={connect}
                   role="button"
                   tabIndex={0}
-                  className="px-8 py-3 border text-base rounded-md font-medium text-white bg-indigo-600 hover:bg-indigo-700 cursor-pointer"
                 >
                   Install Metamask
-                </span>
+                </Button>
               )}
             </div>
           </div>
