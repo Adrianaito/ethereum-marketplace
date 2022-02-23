@@ -28,7 +28,7 @@ const Navbar = () => {
                 </p>
               </Link>
             </div>
-            <div className="flex">
+            <div className="flex items-center">
               <Link href="/">
                 <p className="font-medium mr-8 text-gray-500 hover:text-gray-900 cursor-pointer">
                   Wishlist
